@@ -18,3 +18,8 @@ TEMPLATES = {
     "Confident": ["I like that—coffee this week?", "Bold move. I respect it."],
     "Supportive": ["I’m here for you if you want to talk.", "That sounds hard — I’m listening."]
 }
+def build_prompt(situation: str, tone: str, name: str = None) -> str:
+    prompt = f"You are a friendly assistant. Tone: {tone}\n Situation: {situation}\n Write 1-2 short, respectful lines."
+    if name:
+        prompt += f" Use the name: {name}."
+    return prompt
