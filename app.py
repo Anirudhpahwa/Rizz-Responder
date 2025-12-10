@@ -45,8 +45,26 @@ if st.button("Generate response"):
     if not situation or not situation.strip():
         st.warning("Please enter the situation first.")
     else:
-        st.info("Inputs received. Will try AI (remote → local) and fallback to templates.")
-        st.write("Name:", user_name or "(no name)")
-        st.write("Tone:", tone)
-        st.write("Situation preview:", situation[:300])
+        # try remote
+        reply = generate_remote(situation, tone, user_name)
+        # try local if remote returned nothing
+        if not reply:
+            reply = generate_local(situation, tone, user_name)
+        # fallback to templates
+        if not reply:
+            reply = random.choice(TEMPLATES.get(tone, ["(No reply)"]))
+        # safety
+        if not simple_safety_check(reply):
+            st.warning("Generated reply failed safety check — showing safe fallback.")
+            reply = random.choice(TEMPLATES.get(tone, ["(No safe reply)"]))
+        st.subheader("Reply")
+        st.write(reply)
 
+
+def generate_remote(situation: str, tone: str, name: str = None) -> str:
+    # placeholder: tries remote if you add HF token later
+    return ""  # empty means remote not available / failed
+
+def generate_local(situation: str, tone: str, name: str = None) -> str:
+    # placeholder local generator — for now just return an empty string to force fallback
+    return ""
