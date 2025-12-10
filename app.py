@@ -10,3 +10,11 @@ client = InferenceClient(api_key=HF_API_KEY) if HF_API_KEY else None
 
 if not HF_API_KEY:
     st.warning("HF_API_KEY not found. Add it to .env to use AI. App will use local templates as fallback.")
+
+#Fallback
+TEMPLATES = {
+    "Playful": ["That’s cheeky — I like it.", "Careful, I might flirt back 😉"],
+    "Sweet": ["That warmed my day. Tell me more.", "You have such a sweet way with words."],
+    "Confident": ["I like that—coffee this week?", "Bold move. I respect it."],
+    "Supportive": ["I’m here for you if you want to talk.", "That sounds hard — I’m listening."]
+}
