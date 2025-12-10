@@ -23,3 +23,6 @@ def build_prompt(situation: str, tone: str, name: str = None) -> str:
     if name:
         prompt += f" Use the name: {name}."
     return prompt
+
+st.write("Prompt test")
+st.write(build_prompt("They said they had a bad day at work", "Supportive", "Alex"))
