@@ -29,3 +29,15 @@ def simple_safety_check(text: str) -> bool:
     blocked = ["sexual", "rape", "kill", "slur"]
     t = (text or "").lower()
     return not any(b in t for b in blocked)
+
+import streamlit as st
+from dotenv import load_dotenv
+load_dotenv()
+
+st.set_page_config(page_title="Rizz Responder", page_icon="💬")
+st.title("Rizz Responder — Beginner")
+
+user_name = st.text_input("Your name (optional)")
+situation = st.text_area("Describe the situation / paste the message", height=140)
+tone = st.selectbox("Choose a tone", ["Playful", "Sweet", "Confident", "Supportive"])
+
