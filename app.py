@@ -41,3 +41,12 @@ user_name = st.text_input("Your name (optional)")
 situation = st.text_area("Describe the situation / paste the message", height=140)
 tone = st.selectbox("Choose a tone", ["Playful", "Sweet", "Confident", "Supportive"])
 
+if st.button("Generate response"):
+    if not situation or not situation.strip():
+        st.warning("Please enter the situation first.")
+    else:
+        st.info("Inputs received. Will try AI (remote → local) and fallback to templates.")
+        st.write("Name:", user_name or "(no name)")
+        st.write("Tone:", tone)
+        st.write("Situation preview:", situation[:300])
+
