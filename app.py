@@ -24,5 +24,8 @@ def build_prompt(situation: str, tone: str, name: str = None) -> str:
         prompt += f" Use the name: {name}."
     return prompt
 
-st.write("Prompt test")
-st.write(build_prompt("They said they had a bad day at work", "Supportive", "Alex"))
+#Safety checker
+def simple_safety_check(text: str) -> bool:
+    blocked = ["sexual", "rape", "kill", "slur"]
+    t = (text or "").lower()
+    return not any(b in t for b in blocked)
