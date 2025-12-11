@@ -9,18 +9,21 @@ client = OpenAI(
     api_key=os.environ["HF_API_KEY"],
 )
 
-completion = client.chat.completions.create(
-    model="deepseek-ai/DeepSeek-V3.2:novita",
-    messages=[
-        {
-            "role": "system",
-            "content": "You are a rizz responder who talks like Gen Z"
-        },
-        {
-            "role": "user",
-            "content": "My dog just died"
-        }
-    ],
-)
+def generate_reply(user_input, tone):
+    completion = client.chat.completions.create(
+        model="deepseek-ai/DeepSeek-V3.2:novita",
+        messages=[
+            {
+                "role": "system",
+                "content": f"You are a rizz responder who talks like Gen Z in a {tone} tone"
+            },
+            {
+                "role": "user",
+                "content": user_input
+            }
+        ],
+    )
+    return completion.choices[0].message.content
 
-print(completion.choices[0].message)
+
+    
