@@ -13,7 +13,11 @@ user_input = st.text_area("Message:", placeholder="Type something...")
 # Optional tone selector
 tone = st.selectbox(
     "Select tone:",
-    ["Playful", "Sweet", "Confident", "Supportive", "Angry"],
+    ["Playful", "Sweet", "Confident", "Supportive", "Angry","Chaotic", "Flirty", "Dry Humor", "Sarcastic", "Wholesome", 
+"Bold", "Teasing", "Mysterious", "Simp Mode", "Ironic",
+"Cool & Detached", "Over-the-Top", "Soft Rizz", "Smooth",
+"Goofy", "Witty", "Calm", "Respectful", "Eager", "Nonchalant"
+],
     index=0
 )
 
