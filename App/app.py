@@ -1,5 +1,5 @@
 import streamlit as st
-from LLM_Utils.Response_generator import generate_reply
+from llm_utils.Response_generator import generate_reply
 
 st.set_page_config(page_title="Rizz Responder", page_icon="💬")
 
